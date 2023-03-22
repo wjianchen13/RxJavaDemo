@@ -2,11 +2,14 @@ package com.example.rxjavademo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+
+import com.example.rxjavademo.base.BaseActivity;
 
 public class MainActivity extends AppCompatActivity {
-
-    private Subscription mSubscription;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,4 +17,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
     }
+    
+    public void onBase(View v) {
+        startActivity(new Intent(this, BaseActivity.class));
+    }
+    
 }
