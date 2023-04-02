@@ -15,6 +15,9 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
+/**
+ * RxJava基础
+ */
 public class BaseActivity extends AppCompatActivity {
     
 

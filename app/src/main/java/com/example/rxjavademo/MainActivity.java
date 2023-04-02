@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.rxjavademo.base.BaseActivity;
+import com.example.rxjavademo.thread.ThreadActivity;
 
 public class MainActivity extends AppCompatActivity {
     
@@ -20,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
     
     public void onBase(View v) {
         startActivity(new Intent(this, BaseActivity.class));
+    }
+
+    public void onThread(View v) {
+        startActivity(new Intent(this, ThreadActivity.class));
     }
     
 }
