@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.rxjavademo.base.BaseActivity;
+import com.example.rxjavademo.subject.SubjectActivity;
 import com.example.rxjavademo.thread.ThreadActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,5 +27,8 @@ public class MainActivity extends AppCompatActivity {
     public void onThread(View v) {
         startActivity(new Intent(this, ThreadActivity.class));
     }
-    
+
+    public void onSubject(View v) {
+        startActivity(new Intent(this, SubjectActivity.class));
+    }
 }
