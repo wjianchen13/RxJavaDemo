@@ -22,6 +22,9 @@
         <activity android:name=".thread.ThreadActivity" />
         <activity android:name=".subject.SubjectActivity" />
 
+        <activity android:name=".base.ThreadActivity" />
+        <activity android:name=".base.OperateActivity" />
+
     </application>
 
 </manifest>
