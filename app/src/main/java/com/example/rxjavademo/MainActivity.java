@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.rxjavademo.base.BaseActivity;
+import com.example.rxjavademo.processor.ProcessorActivity;
 import com.example.rxjavademo.subject.SubjectActivity;
 import com.example.rxjavademo.thread.ThreadActivity;
 
@@ -31,4 +32,9 @@ public class MainActivity extends AppCompatActivity {
     public void onSubject(View v) {
         startActivity(new Intent(this, SubjectActivity.class));
     }
+
+    public void onProcessor(View v) {
+        startActivity(new Intent(this, ProcessorActivity.class));
+    }
+
 }

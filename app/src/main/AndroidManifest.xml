@@ -25,6 +25,8 @@
         <activity android:name=".base.ThreadActivity" />
         <activity android:name=".base.OperateActivity" />
 
+        <activity android:name=".processor.ProcessorActivity" />
+
     </application>
 
 </manifest>

@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="RxJava 使用" />
+            android:text="RxJava Subject" />
         
         <Button
             android:layout_width="match_parent"
@@ -24,8 +24,9 @@
             android:layout_marginTop="5dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="基础"
-            android:onClick="onBase" />
+            android:text="PublishProcessor"
+            android:onClick="onTest1" />
+
 
         <Button
             android:layout_width="match_parent"
@@ -33,8 +34,8 @@
             android:layout_marginTop="5dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="RxJava线程"
-            android:onClick="onThread" />
+            android:text="test1"
+            android:onClick="onTest2" />
 
         <Button
             android:layout_width="match_parent"
@@ -42,8 +43,8 @@
             android:layout_marginTop="5dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="RxJava Subject"
-            android:onClick="onSubject" />
+            android:text="test1"
+            android:onClick="onTest3" />
 
         <Button
             android:layout_width="match_parent"
@@ -51,9 +52,9 @@
             android:layout_marginTop="5dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="RxJava Processor"
-            android:onClick="onProcessor" />
-
+            android:text="test1"
+            android:onClick="onTest4" />
+        
     </LinearLayout>
 
 </ScrollView>

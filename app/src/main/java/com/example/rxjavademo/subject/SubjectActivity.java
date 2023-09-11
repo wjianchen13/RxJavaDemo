@@ -50,14 +50,14 @@ public class SubjectActivity extends AppCompatActivity {
         subject.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
         // observer1 will receive all onNext and onComplete events
-        subject.subscribe(observer1);
-        subject.onNext("one");
-        subject.onNext("two");
+//        subject.subscribe(observer1);
+//        subject.onNext("one");
+//        subject.onNext("two");
 
         // observer2 will only receive "three" and onComplete
-        subject.subscribe(observer2);
-        subject.onNext("three");
-        subject.onComplete();
+//        subject.subscribe(observer2);
+//        subject.onNext("three");
+//        subject.onComplete();
 
     }
 
