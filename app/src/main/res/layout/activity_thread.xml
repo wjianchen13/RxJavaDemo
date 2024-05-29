@@ -52,8 +52,26 @@
             android:layout_marginTop="5dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="多次切换线程，添加log"
+            android:text="RxJava和Retrofit结合完成网络请求"
             android:onClick="onTest4" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="RxJava doOnNext doOnSubscribe"
+            android:onClick="onTest5" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="RxJava线程完成耗时操作"
+            android:onClick="onTest6" />
         
     </LinearLayout>
 

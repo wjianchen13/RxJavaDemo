@@ -51,8 +51,26 @@
             android:layout_marginTop="5dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="zip"
+            android:text="嵌套网络请求"
             android:onClick="onTest4" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="zip"
+            android:onClick="onTest5" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="zip 模拟需要从2个接口下载数据进行显示"
+            android:onClick="onTest6" />
         
     </LinearLayout>
 

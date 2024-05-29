@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="RxJava 基础" />
+            android:text="RxJava 入门" />
         
         <Button
             android:layout_width="match_parent"
@@ -26,7 +26,6 @@
             android:gravity="center"
             android:text="入门测试"
             android:onClick="onTest1" />
-
 
         <Button
             android:layout_width="match_parent"
@@ -43,7 +42,7 @@
             android:layout_marginTop="5dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="中断事件发送"
+            android:text="onComplete和onError互斥测试"
             android:onClick="onTest3" />
 
         <Button
@@ -52,9 +51,45 @@
             android:layout_marginTop="5dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="只关心onNext事件"
+            android:text="中断事件发送 Disposable"
             android:onClick="onTest4" />
-        
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="只关心onNext事件"
+            android:onClick="onTest5" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="关心onNext, onError事件"
+            android:onClick="onTest6" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="关心onNext, onError, onComplete事件"
+            android:onClick="onTest7" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="关心onNext, onError, onComplete, onSubscribe事件"
+            android:onClick="onTest8" />
+
     </LinearLayout>
 
 </ScrollView>
