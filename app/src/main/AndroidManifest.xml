@@ -23,11 +23,13 @@
         </activity>
         <activity android:name=".base.BaseActivity" />
         <activity android:name=".thread.ThreadActivity" />
-        <activity android:name=".subject.SubjectActivity" />
-
-        <activity android:name=".base.ThreadActivity" />
         <activity android:name=".operator.OperatorActivity" />
+        <activity android:name=".flowable.FlowableActivity" />
+        <activity android:name=".learn.LearnActivity" />
+        <activity android:name=".example.ExampleActivity" />
+        <activity android:name=".example.ExampleActivity1" />
 
+        <activity android:name=".subject.SubjectActivity" />
         <activity android:name=".processor.ProcessorActivity" />
 
     </application>

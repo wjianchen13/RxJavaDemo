@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.rxjavademo.base.BaseActivity;
+import com.example.rxjavademo.example.ExampleActivity;
+import com.example.rxjavademo.flowable.FlowableActivity;
+import com.example.rxjavademo.learn.LearnActivity;
 import com.example.rxjavademo.operator.OperatorActivity;
 import com.example.rxjavademo.processor.ProcessorActivity;
 import com.example.rxjavademo.subject.SubjectActivity;
@@ -44,6 +47,32 @@ public class MainActivity extends AppCompatActivity {
     public void onTest3(View v) {
         startActivity(new Intent(this, OperatorActivity.class));
     }
+
+    /**
+     * RxJava Flowable
+     * @param v
+     */
+    public void onTest4(View v) {
+        startActivity(new Intent(this, FlowableActivity.class));
+    }
+
+    /**
+     * RxJava 学习指南
+     * @param v
+     */
+    public void onTest5(View v) {
+        startActivity(new Intent(this, LearnActivity.class));
+    }
+
+    /**
+     * RxJava 使用例子
+     * @param v
+     */
+    public void onTest6(View v) {
+        startActivity(new Intent(this, ExampleActivity.class));
+    }
+
+
 
 
     public void onSubject(View v) {

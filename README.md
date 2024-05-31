@@ -9,3 +9,12 @@ https://blog.csdn.net/qingdaohaishanhu/article/details/124224117
 
 Android -- RxJava 专栏  
 https://blog.csdn.net/duoduo_11011/category_11879551.html?spm=1001.2014.3001.5482  
+
+RxJava 操作符 on和doOn 线程切换 调度 Schedulers 线程池
+https://www.cnblogs.com/baiqiantao/p/9650968.html
+
+
+
+
+
+

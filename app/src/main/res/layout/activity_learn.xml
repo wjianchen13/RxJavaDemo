@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="RxJava 使用" />
+            android:text="RxJava 学习指南" />
         
         <Button
             android:layout_width="match_parent"
@@ -24,7 +24,7 @@
             android:layout_marginTop="5dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="RxJava 入门"
+            android:text="Observable使用"
             android:onClick="onTest1" />
 
         <Button
@@ -33,7 +33,7 @@
             android:layout_marginTop="5dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="RxJava线程"
+            android:text="线程调度"
             android:onClick="onTest2" />
 
         <Button
@@ -42,7 +42,7 @@
             android:layout_marginTop="5dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="RxJava 操作符"
+            android:text="map 操作符"
             android:onClick="onTest3" />
 
         <Button
@@ -51,7 +51,7 @@
             android:layout_marginTop="5dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="RxJava Flowable"
+            android:text="concat 操作符"
             android:onClick="onTest4" />
 
         <Button
@@ -60,7 +60,7 @@
             android:layout_marginTop="5dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="RxJava 学习指南"
+            android:text="flatMap 操作符"
             android:onClick="onTest5" />
 
         <Button
@@ -69,7 +69,7 @@
             android:layout_marginTop="5dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="RxJava 使用例子"
+            android:text="zip 操作符"
             android:onClick="onTest6" />
 
         <Button
@@ -78,8 +78,8 @@
             android:layout_marginTop="5dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="RxJava Subject"
-            android:onClick="onSubject" />
+            android:text="interval 操作符"
+            android:onClick="onTest7" />
 
         <Button
             android:layout_width="match_parent"
@@ -87,8 +87,8 @@
             android:layout_marginTop="5dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="RxJava Processor"
-            android:onClick="onProcessor" />
+            android:text="停止 interval"
+            android:onClick="onTest8" />
 
     </LinearLayout>
 

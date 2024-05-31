@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="RxJava Flowable" />
+        
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="Flowable 基础用法"
+            android:onClick="onTest1" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="request 方法作用，同步"
+            android:onClick="onTest2" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="request 方法作用,异步"
+            android:onClick="onTest3" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="request 方法作用,异步，数据缓冲池"
+            android:onClick="onTest4" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="request 方法作用,异步，逐步取出数据"
+            android:onClick="onTest5" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="Flowable缓冲池大小 128 测试，不超过128"
+            android:onClick="onTest6" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="Flowable缓冲池大小 128 测试，超过128"
+            android:onClick="onTest7" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="Flowable BackpressureStrategy.BUFFER"
+            android:onClick="onTest8" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="Flowable BackpressureStrategy.BUFFER 无限发送数据"
+            android:onClick="onTest9" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="Flowable BackpressureStrategy.DROP 无限发送事件"
+            android:onClick="onTest10" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="Flowable BackpressureStrategy.DROP 发送10000事件"
+            android:onClick="onTest11" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="Flowable BackpressureStrategy.DROP 获取发送事件"
+            android:onClick="onTest12" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="Flowable BackpressureStrategy.LATEST 无限发送事件"
+            android:onClick="onTest13" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="Flowable BackpressureStrategy.LATEST 发送10000事件"
+            android:onClick="onTest14" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="Flowable BackpressureStrategy.LATEST 获取发送事件"
+            android:onClick="onTest15" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="Flowable"
+            android:onClick="onTest99" />
+
+    </LinearLayout>
+
+</ScrollView>
