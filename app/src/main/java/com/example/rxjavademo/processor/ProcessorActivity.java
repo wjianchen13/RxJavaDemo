@@ -1,15 +1,14 @@
 package com.example.rxjavademo.processor;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rxjavademo.R;
-
-import java.lang.ref.WeakReference;
+import com.example.rxjavademo.Utils;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -18,7 +17,6 @@ import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.processors.PublishProcessor;
 import io.reactivex.schedulers.Schedulers;
-import io.reactivex.subjects.PublishSubject;
 
 /**
  * RxJava Subject
@@ -37,41 +35,46 @@ import io.reactivex.subjects.PublishSubject;
 public class ProcessorActivity extends AppCompatActivity {
 
     private static final String TAG = ProcessorActivity.class.getName();
-    PublishProcessor subject;
-    private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
+    private CompositeDisposable mCompositeDisposable;
+    private PublishProcessor mPublishProcessor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mCompositeDisposable = new CompositeDisposable();
         setContentView(R.layout.activity_processor);
-        Log.d(TAG, Thread.currentThread().getName());
+        Utils.log(Thread.currentThread().getName());
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(mCompositeDisposable != null) {
+            mCompositeDisposable.dispose();
+            mCompositeDisposable = null;
+        }
     }
 
     /**
-     * PublishProcessor
+     * PublishProcessor 模拟接收数据异常
+     * 在LambdaSubscriber 第62行onNext方法会把异常捕获掉。
      * @param v
      */
+    @SuppressLint("CheckResult")
     public void onTest1(View v) {
-//        PublishProcessor subject = PublishProcessor.create();
-        subject = PublishProcessor.create();
-        subject.subscribeOn(Schedulers.io())
+        PublishProcessor publishProcessor = PublishProcessor.create();
+        publishProcessor.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
-    }
 
-    /**
-     *
-     * @param v
-     */
-    public void onTest2(View v) {
-        subject.onNext(0);
-        subject.onNext(1);
+        publishProcessor.onNext(0);
+        publishProcessor.onNext(1);
 
-        Disposable disposable = subject.subscribe(new Consumer<Integer>() {
+        Disposable disposable = publishProcessor.subscribe(new Consumer<Integer>() {
             @Override
             public void accept(Integer integer) throws Exception {
                 TextView tvTest = null;
                 tvTest.setText("");
-                Log.d(TAG, "accept: " + integer);
+                Utils.log("accept: " + integer);
             }
         }, new Consumer<Throwable>() {
             @Override
@@ -81,91 +84,229 @@ public class ProcessorActivity extends AppCompatActivity {
         }, new Action() {
             @Override
             public void run() throws Exception {
-                Log.d(TAG, "run: onComplete");
+                Utils.log("run: onComplete");
             }
         });
-        subject.onNext(3);
-//        disposable.dispose();
+        publishProcessor.onNext(3);
         mCompositeDisposable.add(disposable);
         int size = mCompositeDisposable.size();
-//        mCompositeDisposable.dispose();
-        subject.onNext(4);
-
+        publishProcessor.onNext(4);
     }
 
     /**
-     *
+     * PublishProcessor基础使用
+     * 哪个时刻开始订阅，就从哪个时刻开始接收数据
+     * @param v
+     */
+    public void onTest2(View v) {
+        PublishProcessor publishProcessor = PublishProcessor.create();
+        publishProcessor.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+
+        publishProcessor.onNext(0);
+        publishProcessor.onNext(1);
+
+        Disposable disposable = publishProcessor.subscribe(new Consumer<Integer>() {
+            @Override
+            public void accept(Integer integer) throws Exception {
+                Utils.log("accept: " + integer);
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) {
+
+            }
+        }, new Action() {
+            @Override
+            public void run() throws Exception {
+                Utils.log("run: onComplete");
+            }
+        });
+        publishProcessor.onNext(3);
+        mCompositeDisposable.add(disposable);
+        int size = mCompositeDisposable.size();
+        publishProcessor.onNext(4);
+    }
+
+    /**
+     * 创建一个PublishProcessor，分开设置
+     * mPublishProcessor先设置observeOn(AndroidSchedulers.mainThread())，然后在调用subscribe()切换线程会失败，切换不到主线程
+     * 应该要在subscribe()再调用observeOn(AndroidSchedulers.mainThread())才能切换到主线程
      * @param v
      */
     public void onTest3(View v) {
-        PublishProcessor subject1 = subject;
+        mPublishProcessor = PublishProcessor.create();
+        mPublishProcessor.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+
+        Disposable disposable = mPublishProcessor.subscribe(new Consumer<Integer>() {
+            @Override
+            public void accept(Integer integer) throws Exception {
+                Utils.log("accept thread name: " + Utils.getThreadName() + "   accept: " + integer);
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) {
+
+            }
+        }, new Action() {
+            @Override
+            public void run() throws Exception {
+                Utils.log("run: onComplete");
+            }
+        });
+        mCompositeDisposable.add(disposable);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Utils.log("onNext thread name: " + Utils.getThreadName());
+                mPublishProcessor.onNext(3);
+                mPublishProcessor.onNext(4);
+            }
+        }).start();
     }
 
     /**
-     *
+     * 创建一个PublishProcessor，链式调用
+     * mPublishProcessor先设置observeOn(AndroidSchedulers.mainThread())，然后在调用subscribe()切换线程会失败，切换不到主线程
+     * 应该要在subscribe()再调用observeOn(AndroidSchedulers.mainThread())才能切换到主线程
      * @param v
      */
     public void onTest4(View v) {
+        PublishProcessor<String>  publishProcessor = PublishProcessor.create();
+        Disposable disposable = publishProcessor.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String str) throws Exception {
+                        Utils.log("accept thread name: " + Utils.getThreadName() + "   accept: " + str);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) {
 
-//                PublishProcessor<Integer> processor = PublishProcessor.create();
-//                WeakReference<Observer> weakReference = new WeakReference<>(new Observer());
-//
-//                processor.subscribe(
-//                        value -> {
-//                            Observer observer = weakReference.get();
-//                            if (observer != null) {
-//                                observer.onNext(value);
-//                            }
-//                        },
-//                        error -> {
-//                            Observer observer = weakReference.get();
-//                            if (observer != null) {
-//                                observer.onError(error);
-//                            }
-//                        },
-//                        () -> {
-//                            Observer observer = weakReference.get();
-//                            if (observer != null) {
-//                                observer.onComplete();
-//                            }
-//                        }
-//                );
-//
-//                processor.onNext(1);
-//                processor.onNext(2);
-//
-//                // 取消订阅后等待一段时间
-//                Disposable disposable = processor.subscribe();
-//                disposable.dispose();
-//                Thread.sleep(5000);
-//
-//                // 检查观察者对象是否被回收
-//                Observer observer = weakReference.get();
-//                if (observer == null) {
-//                    System.out.println("Observer has been garbage collected.");
-//                } else {
-//                    System.out.println("Observer is still reachable.");
-//                }
-//            }
+                    }
+                }, new Action() {
+                    @Override
+                    public void run() throws Exception {
+                        Utils.log("run: onComplete");
+                    }
+                });
 
 
+        mCompositeDisposable.add(disposable);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Utils.log("onNext thread name: " + Utils.getThreadName());
+                publishProcessor.onNext("3");
+                publishProcessor.onNext("4");
+            }
+        }).start();
     }
+
+    /**
+     * 主线程发送数据,主线程接收
+     * @param v
+     */
+    @SuppressLint("CheckResult")
+    public void onTest5(View v) {
+        // 创建PublishProcessor
+        PublishProcessor<String> processor = PublishProcessor.create();
+
+        processor.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+
+        // 在主线程处理数据
+        Disposable disposable = processor.observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        data -> {
+                            Utils.log("subscribe thread name: " + Utils.getThreadName());
+                            System.out.println("Processing data: " + data);
+                        },
+                        error -> error.printStackTrace(),
+                        () -> {
+                            Utils.log("subscribe thread name: " + Utils.getThreadName());
+                            System.out.println("Done processing data.");
+                        }
+                );
+        mCompositeDisposable.add(disposable);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Utils.log("onNext thread name: " + Utils.getThreadName());
+                processor.onNext("3");
+                processor.onNext("4");
+            }
+        }).start();
+    }
+
+    /**
+     * 主线程发送数据,主线程接收
+     * @param v
+     */
+    @SuppressLint("CheckResult")
+    public void onTest6(View v) {
+        PublishProcessor<String> processor = PublishProcessor.create();
+
+        processor.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+
+        // 在主线程处理数据
+        Disposable disposable =  processor.observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        data -> {
+                            Utils.log("subscribe thread name: " + Utils.getThreadName());
+                            System.out.println("Processing data: " + data);
+                        },
+                        error -> error.printStackTrace(),
+                        () -> {
+                            Utils.log("subscribe thread name: " + Utils.getThreadName());
+                            System.out.println("Done processing data.");
+                        }
+                );
+        mCompositeDisposable.add(disposable);
+
+        io.reactivex.schedulers.Schedulers.io().scheduleDirect(() -> {
+            Utils.log("onNext thread name: " + Utils.getThreadName());
+            processor.onNext("Data from child thread");
+            processor.onComplete();
+        });
+    }
+
+    /**
+     * 主线程发送数据
+     * @param v
+     */
+    public void onTest7(View v) {
+        PublishProcessor<String> processor = PublishProcessor.create();
+
+        processor.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+
+        // 在主线程处理数据
+        Disposable disposable =  processor.observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        data -> {
+                            Utils.log("subscribe thread name: " + Utils.getThreadName());
+                            System.out.println("Processing data: " + data);
+                        },
+                        error -> error.printStackTrace(),
+                        () -> {
+                            Utils.log("subscribe thread name: " + Utils.getThreadName());
+                            System.out.println("Done processing data.");
+                        }
+                );
+        mCompositeDisposable.add(disposable);
+
+        processor.onNext("Data from child thread");
+    }
+
     
 }
 
-//static class Observer {
-//    public void onNext(int value) {
-//        System.out.println("Observer: " + value);
-//    }
-//
-//    public void onError(Throwable error) {
-//        System.err.println("Error: " + error);
-//    }
-//
-//    public void onComplete() {
-//        System.out.println("Observer completed");
-//    }
-//}
+
 
     
 

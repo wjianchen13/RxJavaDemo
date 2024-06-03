@@ -24,7 +24,7 @@
             android:layout_marginTop="5dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="PublishProcessor"
+            android:text="PublishProcessor 模拟接收数据异常"
             android:onClick="onTest1" />
 
 
@@ -34,7 +34,7 @@
             android:layout_marginTop="5dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="test1"
+            android:text="PublishProcessor基础使用"
             android:onClick="onTest2" />
 
         <Button
@@ -43,7 +43,7 @@
             android:layout_marginTop="5dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="test1"
+            android:text="创建一个PublishProcessor，分开设置"
             android:onClick="onTest3" />
 
         <Button
@@ -52,8 +52,35 @@
             android:layout_marginTop="5dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="test1"
+            android:text="创建一个PublishProcessor，链式调用"
             android:onClick="onTest4" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="主线程发送数据,主线程接收"
+            android:onClick="onTest5" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="子线程发送数据,主线程接收"
+            android:onClick="onTest6" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="主线程发送数据"
+            android:onClick="onTest7" />
         
     </LinearLayout>
 

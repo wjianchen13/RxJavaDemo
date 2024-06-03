@@ -13,8 +13,8 @@ https://blog.csdn.net/duoduo_11011/category_11879551.html?spm=1001.2014.3001.548
 RxJava 操作符 on和doOn 线程切换 调度 Schedulers 线程池
 https://www.cnblogs.com/baiqiantao/p/9650968.html
 
+RxJava Flowable Processor
+https://cloud.tencent.com/developer/article/1334646
 
-
-
-
-
+理解RxJava（四）Subject用法及原理分析
+https://www.jianshu.com/p/d7efc29ec9d3
