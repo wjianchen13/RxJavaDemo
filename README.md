@@ -18,3 +18,17 @@ https://cloud.tencent.com/developer/article/1334646
 
 理解RxJava（四）Subject用法及原理分析
 https://www.jianshu.com/p/d7efc29ec9d3
+
+RxJava线程切换和背压策略
+https://blog.csdn.net/qq_30172399/article/details/90401402
+
+理解RxJava（四）Subject用法及原理分析
+https://www.jianshu.com/p/d7efc29ec9d3
+
+RxJava Subject
+https://blog.csdn.net/qq_40194724/article/details/136070888
+
+深入Rxjava原理——带你实现一个基本的rxjava框架
+https://zhuanlan.zhihu.com/p/554462873
+
+
