@@ -163,8 +163,7 @@ public class SubjectActivity extends AppCompatActivity {
      */
     public void onTest3(View v) {
         PublishSubject<String> subject = PublishSubject.create();
-//        subject.subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread());
+
         // observer1 will receive all onNext and onComplete events
         Disposable d1 = subject.subscribe(new Consumer<String>() {
             @Override
