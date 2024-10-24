@@ -31,4 +31,9 @@ https://blog.csdn.net/qq_40194724/article/details/136070888
 深入Rxjava原理——带你实现一个基本的rxjava框架
 https://zhuanlan.zhihu.com/p/554462873
 
+手写Rxjava了解核心实现原理
+https://blog.csdn.net/guangdeshishe/article/details/127441044
+
+Rxjava2.x源码解析（一）: 订阅流程
+https://segmentfault.com/a/1190000019243142
 
